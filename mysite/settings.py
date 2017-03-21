@@ -26,9 +26,7 @@ SECRET_KEY = '+xn#13*hm&az_j@vdrt!s-afr=rr_(#0-)5fpl&yve$)qnzd6r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'https://vast-crag-76017.herokuapp.com/',
-]
+ALLOWED_HOSTS = ['*']
 
 
 
