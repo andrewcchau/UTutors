@@ -15,5 +15,5 @@ class Tutor(models.Model):
 
 class Course(models.Model):
     name = models.CharField(max_length=30)
+    subscribed = models.ManyToManyField(Student)
     tutors = models.ManyToManyField(Tutor)
-
