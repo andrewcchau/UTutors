@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,3 +11,42 @@
 {% endfor %}
 <h2>Classes</h2>
 </body>
+=======
+<html>
+<head>
+<style>
+input[type=text] {
+	width: 260px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-image: url('searchicon.png');
+	background-size: 20px 20px;
+	background-position: 10px 10px;
+	background-color: white;
+	background-repeat: no-repeat;
+	padding: 12px 20px 12px 40px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus{
+	width: 50%;
+}
+</style>
+
+<h1 align="center"><b><font color="orange">UTutors</font></b></h1>
+</head>
+<body>
+<div align="center">
+<form>
+	<input type="text" name="search" placeholder="Search for a class or tutor...">
+</form>
+</div>
+{% for s in list_of_students %}
+    <li>{{ s.name }}</li>
+{% endfor %}
+</body>
+</html>
+>>>>>>> 91fcd8619cabdce61792f097f223561e62a34893
