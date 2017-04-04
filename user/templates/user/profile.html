@@ -1,6 +1,6 @@
 <html>
 <head>
-<style>
+<!-- <style>
 input[type=text] {
 	width: 260px;
 	box-sizing: border-box;
@@ -20,15 +20,17 @@ input[type=text] {
 input[type=text]:focus{
 	width: 50%;
 }
-</style>
-
-<h1 align="center"><b><font color="orange">UTutors</font></b></h1>
+</style> -->
+<title>UTutors</title>
+<h1 align="center"><b><font size = "+4" color="orange">UTutors</font></b></h1>
+<hr class = "large">
 </head>
 <body>
 <div align="center">
+<!--
 <form>
 	<input type="text" name="search" placeholder="Search for a class or tutor...">
-</form>
+</form> -->
 </div>
 {% for s in list_of_students %}
     <li>{{ s.name }}</li>
