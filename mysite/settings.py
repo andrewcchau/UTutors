@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'bootstrap3',
 ]
 
@@ -142,4 +142,4 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-SITE_ID = 3
+SITE_ID = 2
