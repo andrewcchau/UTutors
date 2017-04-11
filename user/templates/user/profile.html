@@ -25,25 +25,6 @@ input[type=text]:focus{
 <h1 align="center"><b><font style='font-size:5em' color="orange">UTutors</font></b></h1>
 </head>
 <body>
-<script>
-window.fbAsyngInit = function() {
-    FB.init({
-        appID   : '1782885208707566',
-        xfbml   : true,
-        version : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-};
-
-(function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk')):
-</script>
-
 <div align="center">
 
 <button type="button" style='font-size:5em' href="">Login</button>
@@ -54,11 +35,13 @@ window.fbAsyngInit = function() {
 	<input type="text" name="search" placeholder="Search for a class or tutor...">
 </form> -->
 </div>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="414754501909-9e6rk449ta974hd4k9vgu3uila1t314s.apps.googleusercontent.com">
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
 {% for s in list_of_students %}
     <li>{{ s.name }}</li>
 {% endfor %}
-{% load socialaccount %}
-{% providers_media_js %}
-<a href="{% provider_login_url "facebook" method="js_sdk" %}">Facebook of Connect</a>
 </body>
 </html>
