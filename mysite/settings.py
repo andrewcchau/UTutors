@@ -143,3 +143,11 @@ STATICFILES_DIRS = (
 )
 
 SITE_ID = 2
+
+ACCOUNT_FORMS = {'signup': 'user.forms.SignUpForm'}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
