@@ -1,4 +1,3 @@
 from django import forms
+from allauth.account.forms import SignupForm
 
-class SignUpForm(forms.Form):
-    your_name = forms.CharField(label="your_name", max_length=34)

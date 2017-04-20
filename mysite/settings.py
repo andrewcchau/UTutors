@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'bootstrap3',
+    # 'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -144,10 +144,16 @@ STATICFILES_DIRS = (
 
 SITE_ID = 2
 
-ACCOUNT_FORMS = {'signup': 'user.forms.SignUpForm'}
-
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = True
+ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD  = 'email'
+# ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.SignUpForm'
+ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
+
 
