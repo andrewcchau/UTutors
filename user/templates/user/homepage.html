@@ -1,23 +1,4 @@
-{% load staticfiles %}
-<html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-{#    <link rel="stylesheet" href="{% static css/bootstrap.min.css %}"#}
-<title>ututors</title>
-{#<h1 align="center"><b><font style='font-size:4em' color="orange">UTutors</font></b></h1>#}
-</head>
-<body>
-<div align="center">
-    <a href="accounts/login" class="btn-primary btn-lg">Login</a>
-    <a href="accounts/signup" class="btn-secondary btn-lg">Sign Up</a>
-{#    <button  class = "btn btn-primary btn-lg " href="accounts/login">Login</button>#}
-{#    <button class = "btn btn-secondary btn-lg " href="accounts/signup">Sign Up</button>#}
-    {% block content %}
-    {% endblock content %}
-</div>
-
-{% for s in list_of_students %}
-    <li>{{ s.name }}</li>
-{% endfor %}
-</body>
-</html>
+{% extends 'user/base.html' %}
+{% block content %}
+    <p> About ututors, a beautiful website</p>
+{% endblock content %}
