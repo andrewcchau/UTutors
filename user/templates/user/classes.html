@@ -1,30 +1,6 @@
-<html
-	<head>
-		<title>Classes</title>
-		<h1 align="center"><b><font style='font-size:3em' color="orange">Classes</font></b></h1>
-	</head>
-	<body>
-		<style>
-			.menu { text-align: center; }
-			.menu ul { display:inline-table; width:10%;}
-		</style>
-		<div class="menu">
-			<ul>
-				<li>asdf</li>
-				<li>asdf</li>
-				<li>asdf</li>
-				<li>asdf</li>
-				<li>asdf</li>
-			</ul>
-			<ul>
-				<li>asdf</li>
-				<li>asdf</li>
-				<li>asdf</li>
-				<li>asdf</li>
-				<li>asdf</li>
-			</ul>
-		</div>
-		<div align="center">
-
-	</body>
-</html>
+{% extends 'user/base.html' %}
+{% block content %}
+     {% for c in list_of_courses%}
+         <li>{{ c.name}}</li>
+    {% endfor %}
+{% endblock content%}
