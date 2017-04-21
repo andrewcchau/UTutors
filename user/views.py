@@ -8,7 +8,7 @@ from .models import Student, Tutor, Course
 #     return render(request, 'user/homepage.html', context)
 
 def index(request):
-    return render(request, 'user/base.html')
+    return render(request, 'user/homepage.html', {})
 
 def classes(request):
     list_of_classes = Course.objects.all()
