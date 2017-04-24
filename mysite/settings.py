@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'crispy_forms',
     # 'bootstrap3',
 ]
 
@@ -154,6 +155,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD  = 'email'
 # ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.SignUpForm'
-ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
+# ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
