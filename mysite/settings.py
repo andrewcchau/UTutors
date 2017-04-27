@@ -156,5 +156,14 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD  = 'email'
 # ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.SignUpForm'
 # ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'stephenma064'
+EMAIL_HOST_PASSWORD = '0#9sQa^Mj4tG'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = 'index'
