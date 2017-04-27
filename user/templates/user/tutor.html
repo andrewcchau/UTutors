@@ -1,11 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <h1 align="center"><b><font style='font-size:2em' color="orange">Tutor Placeholder</font></b></h1>
-</head>
-<body>
+<style type="text/css">
+	#ProfilePage
+	{
+	    /* Move it off the top of the page, then centre it horizontally */
+	    margin: 50px auto;
+	    width: 635px auto;
 
-</body>
+	}
+
+	#Info
+	{
+	    width: 300px auto;
+	    text-align: center;
+	    align="center"
+
+	    /* Move it to the right */
+	    float: left;
+
+	}
+
+	#Info strong
+	{
+	    /* Give it a width */
+	    display: inline-block;
+	    width: 0 auto;
+
+	}
+
+	#Info span
+	{
+	    /* Give it a width */
+	    display: inline-block;
+	    width: 400px;
+
+	}
+</style>
+
+<div id="ProfilePage">
+    <div id="LeftCol">
+        <div id="Classification"></div>
+ 	<!--       <div id="ProfileOptions"></div> -->
+    </div>
+
+    <div id="Info">
+        <p>
+            <strong>Name:</strong>
+            <span>PLACHOLDER</span>
+        </p>
+        <p>
+            <strong>Year:</strong>
+            <span>PLACEHOLDER</span>
+        </p>
+        <p>
+            <strong>Rating:</strong>
+            <span>PLACEHOLDER</span>
+        </p>
+        <p>
+            <strong>Price:</strong>
+            <span>PLACEHOLDER</span>
+        </p>
+        <p>
+            <strong>Bio:</strong>
+            <span>PLACEHOLDER</span>
+        </p>
+    </div>
+
+    <!-- Needed because other elements inside ProfilePage have floats -->
+    <div style="clear:both"></div>
+</div>
 </html>
