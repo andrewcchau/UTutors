@@ -162,7 +162,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'stephenma064'
-EMAIL_HOST_PASSWORD = '***REMOVED***'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
