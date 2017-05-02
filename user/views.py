@@ -17,6 +17,23 @@ def index(request):
 
 
 @login_required
+def subscribe(request, class_num):
+    print(request.user)
+    print(class_num)
+    # print(profile)
+    try:
+        course = Course.objects.get(pk=class_num)
+    except Course.DoesNotExist:
+        raise Http404('Something went wrong')
+    mypk = request.user.profile.pk
+    try:
+        is_subscribed = course.tutors.get(pk=mypk)
+    except Profile.DoesNotExist:
+        course.tutors.add(request.user.profile)
+    return redirect(class_profile, class_num)
+
+
+@login_required
 def classes(request):
     list_of_classes = Course.objects.all()
     context = {'list_of_courses': list_of_classes}
@@ -34,15 +51,17 @@ def class_profile(request, class_num):
     return render(request, 'user/class_profile.html', {
         'name': title,
         'tutors': tutors,
+        'class_num': class_num
     })
+
 
 @login_required
 def profile(request, profile_num):
     try:
-        profile = Profile.objects.get(pk = profile_num)
+        profile = Profile.objects.get(pk=profile_num)
     except Profile.DoesNotExist:
         raise Http404('This student does not exist')
-    name = profile.user.first_name
+    name = profile.user.get_full_name
     print(name)
     print('hi')
     bio = profile.bio
@@ -63,9 +82,9 @@ def profile(request, profile_num):
 @transaction.atomic
 def update_profile(request, profile_num):
     try:
-        profile = Profile.objects.get(pk = profile_num)
+        profile = Profile.objects.get(pk=profile_num)
     except Profile.DoesNotExist:
-        raise  Http404('This student does not exist')
+        raise Http404('This student does not exist')
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=profile.user)
         profile_form = ProfileForm(request.POST, instance=profile)
@@ -80,7 +99,7 @@ def update_profile(request, profile_num):
             profile_form.save()
             # my_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
-            return redirect('edit_profile', profile_num)
+            return redirect('profile', profile_num)
         else:
             messages.error(request, _('Please correct the error'))
     else:
