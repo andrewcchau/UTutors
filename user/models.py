@@ -29,7 +29,6 @@ class Profile(models.Model):
     )
     type =  models.CharField(max_length=7, choices=TYPE, default='Student')
     price = models.DecimalField(default=10, max_digits=4, decimal_places=2, blank=True, null=True)
-    rating = models.DecimalField(default=0, max_digits=2, decimal_places=1, blank=True, null=True)
 
 
 class Course(models.Model):

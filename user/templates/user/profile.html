@@ -1,88 +1,84 @@
-{% extends 'base.html'%}
-{#{% load crispy_forms_tags %}#}
-
+{% extends 'base.html' %}
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <button type = "submit">Save Changes</button>
-    </form>
-{#    {% crispy my_form%}#}
+
+<style type="text/css">
+        #ProfilePage {
+            /* Move it off the top of the page, then centre it horizontally */
+            margin: 50px auto;
+            width: 635px auto;
+
+            /* For visibility. Delete me */
+
+        }
+
+        #Info {
+            width: 800px auto;
+            text-align: center;
+
+            /* Move it to the right */
+            float: left;
+
+            /* For visibility. Delete me */
+
+        }
+
+        #Info strong {
+            /* Give it a width */
+            display: inline-block;
+            width: 200px;
+
+            /* For visibility. Delete me */
+        }
+
+        #Info span {
+            /* Give it a width */
+            display: inline-block;
+            width: 400px;
+
+            /* For visibility. Delete me */
+        }
+    </style>
+
+    <div id="ProfilePage">
+        <div id="LeftCol">
+        </div>
+
+        <div id="Info">
+            <p>
+                <strong>Name:</strong>
+                <span>{{ name }} </span>
+            </p>
+            {#                <p>#}
+            {#                    <strong>Year:</strong>#}
+            {#                    <span>9001</span>#}
+            {#                </p>#}
+            {#                <p>#}
+            {#                    <strong>Gender:</strong>#}
+            {#                    <span>Apache-attack-helicopter</span>#}
+            {#                </p>#}
+            {#                <p>#}
+            {#                    <strong>Phone:</strong>#}
+            {#                    <span>867-5309</span>#}
+            {#                </p>#}
+            <p>
+                <strong>Description:</strong>
+                <span>{{ bio }}</span>
+            </p>
+            <p>
+                <strong>Classification:</strong>
+                <span>{{ type }}</span>
+            </p>
+            {% if price != 0 %}
+                <p>
+                    <strong>Price:</strong>
+                <span>{{ price }}</span>
+                </p>
+            {% endif %}
+        </div>
+
+        <!-- Needed because other elements inside ProfilePage have floats -->
+        <div style="clear:both"></div>
+    </div>
+
+
 {% endblock content %}
-{#<style type="text/css">#}
-{##ProfilePage#}
-{#{#}
-{#    /* Move it off the top of the page, then centre it horizontally */#}
-{#    margin: 50px auto;#}
-{#    width: 635px auto;#}
-{##}
-{#/* For visibility. Delete me */#}
-{##}
-{#}#}
-{##}
-{##Info#}
-{#{#}
-{#    width: 800px auto;#}
-{#    text-align: center;#}
-{##}
-{#    /* Move it to the right */#}
-{#    float: left;#}
-{##}
-{#/* For visibility. Delete me */#}
-{##}
-{#}#}
-{##}
-{##Info strong#}
-{#{#}
-{#    /* Give it a width */#}
-{#    display: inline-block;#}
-{#    width: 200px;#}
-{##}
-{#/* For visibility. Delete me */#}
-{#border: 1px solid orange;#}
-{#}#}
-{##}
-{##Info span#}
-{#{#}
-{#    /* Give it a width */#}
-{#    display: inline-block;#}
-{#    width: 400px;#}
-{##}
-{#/* For visibility. Delete me */#}
-{#border: 1px solid purple;#}
-{#}#}
-{#</style>#}
-{##}
-{#<div id="ProfilePage">#}
-{#    <div id="LeftCol">#}
-{#        <div id="Classification">Student/Tutor</div>#}
-{# 	<!--       <div id="ProfileOptions"></div> -->#}
-{#    </div>#}
-{##}
-{#    <div id="Info">#}
-{#        <p>#}
-{#            <strong>Name:</strong>#}
-{#            <span>Bobbert</span>#}
-{#        </p>#}
-{#        <p>#}
-{#            <strong>Year:</strong>#}
-{#            <span>9001</span>#}
-{#        </p>#}
-{#        <p>#}
-{#            <strong>Gender:</strong>#}
-{#            <span>Apache-attack-helicopter</span>#}
-{#        </p>#}
-{#        <p>#}
-{#		    <strong>Phone:</strong>#}
-{#		    <span>867-5309</span>#}
-{#        </p>#}
-{#        <p>#}
-{#            <strong>Description:</strong>#}
-{#            <span>asdfwasdlmfao</span>#}
-{#        </p>#}
-{#    </div>#}
-{##}
-{#    <!-- Needed because other elements inside ProfilePage have floats -->#}
-{#    <div style="clear:both"></div>#}
-{#</div>#}
