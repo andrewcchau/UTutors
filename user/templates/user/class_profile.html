@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ name }}</h1>
+    {% if user.profile.type == 'Tutor' %}
+        {% if user.profile not in tutors %}
+            <a class="btn btn-primary" href="{% url "subscribe" class_num %}">Tutor for this class</a>
+        {% endif %}
+    {% endif %}
     {% for tutor in tutors %}
         <li><a href="{% url 'profile' tutor.pk %}"></a> {{ tutor.user.get_full_name }}</li>
     {% endfor %}
+
 {% endblock content %}
