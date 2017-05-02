@@ -4,10 +4,15 @@
     {% if user.profile.type == 'Tutor' %}
         {% if user.profile not in tutors %}
             <a class="btn btn-primary" href="{% url "subscribe" class_num %}">Tutor for this class</a>
+        {% else %}
+            <a class="btn btn-primary" href="{% url "subscribe" class_num %}">Stop Tutoring this class</a>
         {% endif %}
+    {% else %}
+        <a class="btn btn-primary" href="{% url "request_tutor" class_num %}">Request a Tutor</a>
     {% endif %}
+
     {% for tutor in tutors %}
-        <li><a href="{% url 'profile' tutor.pk %}"></a> {{ tutor.user.get_full_name }}</li>
+        <li><a href="{% url 'profile' tutor.pk %}"> {{ tutor.user.get_full_name }}</a>
     {% endfor %}
 
 {% endblock content %}
