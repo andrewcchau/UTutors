@@ -22,8 +22,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+xn#13*hm&az_j@vdrt!s-afr=rr_(#0-)5fpl&yve$)qnzd6r'
 
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ututors',
         'USER': 'admin',
-        'PASSWORD': 'JrD0svH6Ep5a',
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -156,5 +156,14 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD  = 'email'
 # ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.SignUpForm'
 # ACCOUNT_ADAPTER = 'user.adapters.AccountAdapter'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'stephenma064'
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = 'index'
