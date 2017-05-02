@@ -11,8 +11,9 @@
         <a class="btn btn-primary" href="{% url "request_tutor" class_num %}">Request a Tutor</a>
     {% endif %}
 
-    {% for tutor in tutors %}
-        <li><a href="{% url 'profile' tutor.pk %}"> {{ tutor.user.get_full_name }}</a>
-    {% endfor %}
-
+    <div class="collection" style="text-align: left">
+        {% for tutor in tutors %}
+            <a href="{% url 'profile' tutor.pk %}" class="collection-item"> {{ tutor.user.get_full_name }} ${{ tutor.price }}</a>
+        {% endfor %}
+    </div>
 {% endblock content %}

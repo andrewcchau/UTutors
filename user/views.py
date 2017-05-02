@@ -19,8 +19,6 @@ def index(request):
 
 @login_required
 def subscribe(request, class_num):
-    print(request.user)
-    print(class_num)
     # print(profile)
     try:
         course = Course.objects.get(pk=class_num)
@@ -121,8 +119,9 @@ def update_profile(request, profile_num):
             print(user_form.errors)
             messages.error(request, _('Please correct the error'))
     else:
-        user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=profile)
+        user_form = UserForm(instance=request.user)
+        print(profile.user.first_name)
+        profile_form = ProfileForm(instance=profile)
         # my_form = MyForm(request.POST)
     return render(request, 'user/edit_profile.html', {
         'user_form': user_form,
