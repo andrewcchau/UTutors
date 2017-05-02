@@ -10,7 +10,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>UTutors</title>
+    {% block header %}
+        <title>UTutors</title>
+    {% endblock header %}
 
     <!-- Materialize -->
     <link type="text/css" rel="stylesheet" href="{% static 'materialize/bin/materialize.css' %}"
@@ -21,7 +23,7 @@
     <style>
         #pic {
             background-size: 10em;
-            background-position: 90% 50%;
+            background-position: 50% 50%;
             background-repeat: no-repeat;
             height: 14em;
             margin-left: 0 auto;
@@ -42,7 +44,7 @@
 <!-- Navigation -->
 <nav>
     <div class="nav-wrapper orange accent-4 lighten-2">
-        <a href="#" class="brand-logo">UTutors</a>
+        <a href="{% url "index" %}" class="brand-logo center-block offset-m3"> UTutors</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
                 <a href="{% url "index" %}">Home</a>
@@ -75,11 +77,12 @@
     </div>
 </header>
 
-<div class="row center">
-    {% block content %}
-    {% endblock content %}
+<div class="container">
+    <div class="row center">
+        {% block content %}
+        {% endblock content %}
+    </div>
 </div>
-
 </body>
 
 <!-- Footer -->
