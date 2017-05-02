@@ -1,67 +1,53 @@
 {% extends 'base.html' %}
+
+{% block header %}
+    <title>Profile</title>
+{% endblock header %}
+
 {% block content %}
-
-    {#<style type="text/css">#}
-    {#        #ProfilePage {#}
-    {#            /* Move it off the top of the page, then centre it horizontally */#}
-    {#            margin: 50px auto;#}
-    {#            width: 635px auto;#}
-    {##}
-    {#            /* For visibility. Delete me */#}
-    {##}
-    {#        }#}
-    {##}
-    {#        #Info {#}
-    {#            width: 800px auto;#}
-    {#            text-align: center;#}
-    {##}
-    {#            /* Move it to the right */#}
-    {#            float: left;#}
-    {##}
-    {#            /* For visibility. Delete me */#}
-    {##}
-    {#        }#}
-    {##}
-    {#        #Info strong {#}
-    {#            /* Give it a width */#}
-    {#            display: inline-block;#}
-    {#            width: 200px;#}
-    {##}
-    {#            /* For visibility. Delete me */#}
-    {#        }#}
-    {##}
-    {#        #Info span {#}
-    {#            /* Give it a width */#}
-    {#            display: inline-block;#}
-    {#            width: 400px;#}
-    {##}
-    {#            /* For visibility. Delete me */#}
-    {#        }#}
-    {#    </style>#}
-
-    {#    <div id="ProfilePage">#}
-    {#        <div id="LeftCol">#}
-    {#        </div>#}
-    {##}
-    {#        <div id="Info">#}
-
-    <p>
-        name
-        <span>{{ name }} </span>
-    </p>
-    <p>
-        bio
-        <span>{{ bio }}</span>
-    </p>
-    <p>
-        Classification
-        <span>{{ type }}</span>
-    </p>
-    {% if price != 0 %}
-        <p> Price
-            <span>{{ price }}</span>
-        </p>
+    {% if user.profile == profile %}
+        <a class="waves-effect waves-light btn-large" href="{% url "edit_profile" user.profile.id %}">Edit Profile</a>
     {% endif %}
+
+    <style>
+        .container {
+            margin: 0 auto;
+            max-width: 500px;
+            width: 90%;
+        }
+        .p {
+           text-align: left;
+        }
+    </style>
+    <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+            <span class="card-title">{{ name }}</span>
+            <p>{{ bio }}</p>
+        </div>
+        <div class="card-action">
+            <a href="mailto:{{ profile.user.email }}">Email</a>
+            <a href="http://gitter.im/UTutors/Lobby">Chat</a>
+        </div>
+    </div>
+
+    {#    <p>#}
+    {#        name#}
+    {#        <span>{{ name }} </span>#}
+    {#    </p>#}
+    {#    <p>#}
+    {#        bio#}
+    {#        <span>{{ bio }}</span>#}
+    {#    </p>#}
+    {#    <p>#}
+    {#        Classification#}
+    {#        <span>{{ type }}</span>#}
+    {#    </p>#}
+    {#    {% if price != 0 %}#}
+    {#        <p> Price#}
+    {#            <span>{{ price }}</span>#}
+    {#        </p>#}
+    {#    {% endif %}#}
+
     {#        </div>#}
     {##}
     {#        <!-- Needed because other elements inside ProfilePage have floats -->#}
