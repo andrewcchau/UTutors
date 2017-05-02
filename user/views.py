@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Course, Profile
 from .forms import UserForm, ProfileForm
 from django.utils.translation import ugettext_lazy as _
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 
 
@@ -29,7 +30,22 @@ def subscribe(request, class_num):
     try:
         is_subscribed = course.tutors.get(pk=mypk)
     except Profile.DoesNotExist:
+        is_subscribed = None
         course.tutors.add(request.user.profile)
+    if is_subscribed != None:
+        course.tutors.remove(request.user.profile)
+    return redirect(class_profile, class_num)
+
+
+@login_required
+def request_tutor(request, class_num):
+    try:
+        course = Course.objects.get(pk=class_num)
+    except Course.DoesNotExist:
+        raise Http404('Something went wrong')
+    body = 'Hi, a student in your class ' + course.name + ' is requesting a tutor! contact them!'
+    for x in course.tutors.all():
+        send_mail('Student Request', body, 'admin@UTutors.com', [x.user.email], fail_silently=False)
     return redirect(class_profile, class_num)
 
 
@@ -74,7 +90,8 @@ def profile(request, profile_num):
         'name': name,
         'bio': bio,
         'type': type,
-        'price': price
+        'price': price,
+        'profile': profile,
     })
 
 
@@ -91,16 +108,17 @@ def update_profile(request, profile_num):
         # my_form = MyForm(request.POST)
         user_fields = user_form.data
         user_form = UserForm(user_fields, instance=profile.user)
-        print(user_fields)
-        print(user_form)
+        # print(user_fields)
+        # print(user_form)
         # print(user_form.is_bound)
-        if user_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             # my_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
             return redirect('profile', profile_num)
         else:
+            print(user_form.errors)
             messages.error(request, _('Please correct the error'))
     else:
         user_form = UserForm(request.POST, instance=request.user)

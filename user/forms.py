@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm, Textarea, Select, Form
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field
 from crispy_forms.bootstrap import InlineRadios
@@ -19,9 +19,9 @@ class ProfileForm(ModelForm):
         model = Profile
         fields = ('type', 'bio', 'price')
         widgets = {
-            'bio': Textarea
+            'bio': Textarea,
+            'type': Select
         }
-
 
 # class MyForm(Form):
 #     TYPE = (
