@@ -23,14 +23,19 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=200, default='hi')
+    TYPE = (
+        ('Student', 'Student'),
+        ('Tutor', 'Tutor')
+    )
+    type =  models.CharField(max_length=7, choices=TYPE, default='Student')
     price = models.DecimalField(default=10, max_digits=4, decimal_places=2, blank=True, null=True)
     rating = models.DecimalField(default=0, max_digits=2, decimal_places=1, blank=True, null=True)
 
 
 class Course(models.Model):
     name = models.CharField(max_length=30)
-    students = models.ManyToManyField(Profile, related_name='students')
-    tutors = models.ManyToManyField(Profile, related_name='tutors')
+    students = models.ManyToManyField(Profile, related_name='students', blank=True)
+    tutors = models.ManyToManyField(Profile, related_name='tutors', blank=True)
 
 
 @receiver(post_save, sender=User)

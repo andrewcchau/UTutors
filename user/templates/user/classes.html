@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
      {% for c in list_of_courses%}
-         <li>{{ c.name}}</li>
+         <li><a href=" {% url 'class_profile' c.pk %}"> {{ c.name }}</a></li>
     {% endfor %}
 {% endblock content%}
