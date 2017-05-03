@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="collection">
-     {% for c in list_of_courses%}
-         <a href=" {% url 'class_profile' c.pk %}" class="collection-item"> {{ c.name }} {{ c.tutors|length }} tutor(s)</a>
+     {% for course, num in num_tutors.items%}
+         <a href=" {% url 'class_profile' course.pk %}" class="collection-item"> {{ course.name }} {{ num }} tutor(s)</a>
     {% endfor %}
     </div>
 {% endblock content%}

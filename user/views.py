@@ -50,8 +50,11 @@ def request_tutor(request, class_num):
 @login_required
 def classes(request):
     list_of_classes = Course.objects.all()
-    context = {'list_of_courses': list_of_classes}
-    return render(request, 'user/classes.html', context)
+    dic = {k: len(k.tutors.all()) for k in list_of_classes}
+    return render(request, 'user/classes.html', {
+        'list_of_courses': list_of_classes,
+        'num_tutors': dic
+    })
 
 
 @login_required
@@ -76,8 +79,6 @@ def profile(request, profile_num):
     except Profile.DoesNotExist:
         raise Http404('This student does not exist')
     name = profile.user.get_full_name
-    print(name)
-    print('hi')
     bio = profile.bio
     type = profile.get_type_display()
     if type == 'Tutor':
@@ -89,6 +90,7 @@ def profile(request, profile_num):
         'bio': bio,
         'type': type,
         'price': price,
+        'classes_i_teach': profile.tutors.all(),
         'profile': profile,
     })
 
@@ -111,6 +113,11 @@ def update_profile(request, profile_num):
         # print(user_form.is_bound)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
+            form_type = profile_form.cleaned_data['type']
+            if form_type == 'Student':
+                classes_im_teaching = profile.tutors.all()
+                for x in classes_im_teaching:
+                    x.tutors.remove(profile)
             profile_form.save()
             # my_form.save()
             messages.success(request, _('Your profile was successfully updated!'))
@@ -120,7 +127,6 @@ def update_profile(request, profile_num):
             messages.error(request, _('Please correct the error'))
     else:
         user_form = UserForm(instance=request.user)
-        print(profile.user.first_name)
         profile_form = ProfileForm(instance=profile)
         # my_form = MyForm(request.POST)
     return render(request, 'user/edit_profile.html', {

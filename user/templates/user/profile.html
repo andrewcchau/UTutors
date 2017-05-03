@@ -23,6 +23,9 @@
         <div class="card-content white-text">
             <span class="card-title">{{ name }}</span>
             <p>{{ bio }}</p>
+            {% if profile.type == tutor %}
+                <p>Classes I teach: {{ classes_i_teach|join:", " }}</p>
+            {% endif %}
         </div>
         <div class="card-action">
             <a href="mailto:{{ profile.user.email }}">Email</a>
