@@ -85,12 +85,14 @@ def profile(request, profile_num):
         price = profile.price
     else:
         price = 0
+    dic = {k.name for k in profile.tutors.all()}
+    print(dic)
     return render(request, 'user/profile.html', {
         'name': name,
         'bio': bio,
         'type': type,
         'price': price,
-        'classes_i_teach': profile.tutors.all(),
+        'classes_i_teach': dic,
         'profile': profile,
     })
 

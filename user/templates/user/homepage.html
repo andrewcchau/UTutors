@@ -9,6 +9,7 @@
         <a class="waves-effect waves-light btn-large" href="{% url "classes" %}">Classes</a>
     {% else %}
         <a class="waves-effect waves-light btn-large" href="{% url "account_login" %}">Login</a>
+        <a class="waves-effect waves-light btn-large" href="{% url "account_signup" %}">Sign Up</a>
     {% endif %}
     <p> About ututors, a beautiful website</p>
 {% endblock content %}
